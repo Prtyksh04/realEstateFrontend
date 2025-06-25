@@ -9,7 +9,10 @@ const navItems = [
   { name: 'Properties', href: '/properties' },
   { name: 'Luxury', href: '/luxury' },
   { name: 'Rentals', href: '/rentals' },
-  { name: 'About', href: '/about' }
+  { name: 'About', href: '/about' },
+  { name: 'Contact', href: '/contact' },
+  { name: 'Services', href: '/services' },
+  { name: 'Products', href: '/products' }
 ];
 
 const itemVariants = {
