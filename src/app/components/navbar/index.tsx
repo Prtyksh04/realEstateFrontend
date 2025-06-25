@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Search, Heart, Menu, X } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const navItems = [
   { name: 'Properties', href: '/properties' },
@@ -26,6 +26,43 @@ const itemVariants = {
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return (
+      <nav className="sticky top-0 z-50 backdrop-blur-md bg-white/50 border-b border-gray-200/50">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-16">
+            <Link href="/" className="flex items-center">
+              <span className="text-2xl font-bold text-black">DreamHomes</span>
+            </Link>
+            <div className="hidden md:flex items-center space-x-8">
+              {navItems.map((item) => (
+                <Link 
+                  key={item.name}
+                  href={item.href}
+                  className="text-gray-700 hover:text-black transition-colors duration-300 font-medium"
+                >
+                  {item.name}
+                </Link>
+              ))}
+            </div>
+            <div className="hidden md:flex items-center space-x-4">
+              <Search className="w-5 h-5 text-gray-700 hover:text-black transition-colors duration-300 cursor-pointer" />
+              <Heart className="w-5 h-5 text-gray-700 hover:text-black transition-colors duration-300 cursor-pointer" />
+            </div>
+            <button className="md:hidden p-2">
+              <Menu className="w-6 h-6 text-gray-700" />
+            </button>
+          </div>
+        </div>
+      </nav>
+    );
+  }
 
   return (
     <>

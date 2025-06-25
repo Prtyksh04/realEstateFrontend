@@ -2,6 +2,7 @@
 
 import { motion, Variants } from 'framer-motion';
 import { Search, MapPin, Home as HomeIcon, Award, Users, TrendingUp } from 'lucide-react';
+import { Testimonials } from './components/testimonials';
 
 const fadeInUp: Variants = {
   hidden: { opacity: 0, y: 60 },
@@ -185,7 +186,6 @@ export default function Home() {
                   </div>
                   <button 
                     className="w-full py-3 bg-gray-100 hover:bg-black hover:text-white rounded-full font-medium transition-all duration-300"
-                    suppressHydrationWarning={true}
                   >
                     View Details
                   </button>
@@ -254,6 +254,9 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Testimonials Section */}
+      <Testimonials />
+
       {/* CTA Section */}
       <section className="py-24 bg-black text-white">
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
@@ -272,13 +275,11 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <button 
                 className="px-8 py-4 bg-white text-black rounded-full font-medium hover:bg-gray-100 transition-all duration-300"
-                suppressHydrationWarning={true}
               >
                 Start Your Search
               </button>
               <button 
                 className="px-8 py-4 border-2 border-white text-white rounded-full font-medium hover:bg-white hover:text-black transition-all duration-300"
-                suppressHydrationWarning={true}
               >
                 Contact Agent
               </button>
