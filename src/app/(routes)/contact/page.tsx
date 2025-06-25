@@ -1,8 +1,15 @@
 'use client';
 
 import { motion, Variants } from 'framer-motion';
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Phone, Mail, MapPin, Clock, Send, User, MessageCircle, Home, CheckCircle } from 'lucide-react';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+// Register GSAP plugins
+if (typeof window !== 'undefined') {
+  gsap.registerPlugin(ScrollTrigger);
+}
 
 const fadeInUp: Variants = {
   hidden: { opacity: 0, y: 60 },
@@ -95,6 +102,203 @@ export default function Contact() {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
+  // GSAP refs
+  const heroRef = useRef<HTMLDivElement>(null);
+  const contactCardsRef = useRef<HTMLDivElement>(null);
+  const formRef = useRef<HTMLDivElement>(null);
+  const mapRef = useRef<HTMLDivElement>(null);
+  const officesRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    const ctx = gsap.context(() => {
+      // Hero section animation
+      if (heroRef.current) {
+        gsap.fromTo(heroRef.current.querySelector('h1'), 
+          { opacity: 0, y: 100, scale: 0.8 },
+          { opacity: 1, y: 0, scale: 1, duration: 1.2, ease: "power3.out" }
+        );
+        
+        gsap.fromTo(heroRef.current.querySelector('p'), 
+          { opacity: 0, y: 50 },
+          { opacity: 1, y: 0, duration: 1, delay: 0.3, ease: "power2.out" }
+        );
+
+        // Floating background elements
+        gsap.to(heroRef.current.querySelectorAll('.floating-bg'), {
+          y: "random(-30, 30)",
+          x: "random(-20, 20)",
+          rotation: "random(-5, 5)",
+          duration: "random(3, 6)",
+          ease: "sine.inOut",
+          repeat: -1,
+          yoyo: true,
+          stagger: 0.5
+        });
+      }
+
+      // Contact cards animation
+      if (contactCardsRef.current) {
+        gsap.fromTo(contactCardsRef.current.querySelectorAll('.contact-card'),
+          { opacity: 0, y: 80, rotationX: 45 },
+          {
+            opacity: 1,
+            y: 0,
+            rotationX: 0,
+            duration: 0.8,
+            stagger: 0.15,
+            ease: "back.out(1.7)",
+            scrollTrigger: {
+              trigger: contactCardsRef.current,
+              start: "top 80%",
+              end: "bottom 20%",
+              toggleActions: "play none none reverse"
+            }
+          }
+        );
+
+        // Card hover animations
+        contactCardsRef.current.querySelectorAll('.contact-card').forEach(card => {
+          card.addEventListener('mouseenter', () => {
+            gsap.to(card, { scale: 1.05, y: -10, duration: 0.3, ease: "power2.out" });
+            gsap.to(card.querySelector('.contact-icon'), { 
+              rotation: 360, 
+              scale: 1.2, 
+              duration: 0.5, 
+              ease: "elastic.out(1, 0.5)" 
+            });
+          });
+
+          card.addEventListener('mouseleave', () => {
+            gsap.to(card, { scale: 1, y: 0, duration: 0.3, ease: "power2.out" });
+            gsap.to(card.querySelector('.contact-icon'), { 
+              rotation: 0, 
+              scale: 1, 
+              duration: 0.3, 
+              ease: "power2.out" 
+            });
+          });
+        });
+      }
+
+      // Form animation
+      if (formRef.current) {
+        gsap.fromTo(formRef.current.querySelectorAll('.form-field'),
+          { opacity: 0, x: -50 },
+          {
+            opacity: 1,
+            x: 0,
+            duration: 0.6,
+            stagger: 0.1,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: formRef.current,
+              start: "top 80%"
+            }
+          }
+        );
+
+        // Form submit button pulse
+        const submitBtn = formRef.current.querySelector('.submit-btn');
+        if (submitBtn) {
+          gsap.to(submitBtn, {
+            scale: 1.02,
+            duration: 2,
+            ease: "sine.inOut",
+            repeat: -1,
+            yoyo: true
+          });
+        }
+      }
+
+      // Map animation
+      if (mapRef.current) {
+        gsap.fromTo(mapRef.current,
+          { opacity: 0, x: 50, rotationY: 45 },
+          {
+            opacity: 1,
+            x: 0,
+            rotationY: 0,
+            duration: 1,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: mapRef.current,
+              start: "top 80%"
+            }
+          }
+        );
+
+        // Map pin bounce
+        const mapPin = mapRef.current.querySelector('.map-pin');
+        if (mapPin) {
+          gsap.to(mapPin, {
+            y: -10,
+            duration: 1.5,
+            ease: "sine.inOut",
+            repeat: -1,
+            yoyo: true
+          });
+        }
+      }
+
+      // Offices animation
+      if (officesRef.current) {
+        gsap.fromTo(officesRef.current.querySelectorAll('.office-card'),
+          { opacity: 0, y: 100, rotationX: 30 },
+          {
+            opacity: 1,
+            y: 0,
+            rotationX: 0,
+            duration: 0.8,
+            stagger: 0.2,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: officesRef.current,
+              start: "top 80%"
+            }
+          }
+        );
+
+        // Office card hover effects
+        officesRef.current.querySelectorAll('.office-card').forEach(card => {
+          card.addEventListener('mouseenter', () => {
+            gsap.to(card, { 
+              scale: 1.03, 
+              y: -15, 
+              rotationY: 5,
+              duration: 0.4, 
+              ease: "power2.out" 
+            });
+            gsap.to(card.querySelector('img'), { 
+              scale: 1.1, 
+              duration: 0.6, 
+              ease: "power2.out" 
+            });
+          });
+
+          card.addEventListener('mouseleave', () => {
+            gsap.to(card, { 
+              scale: 1, 
+              y: 0, 
+              rotationY: 0,
+              duration: 0.4, 
+              ease: "power2.out" 
+            });
+            gsap.to(card.querySelector('img'), { 
+              scale: 1, 
+              duration: 0.6, 
+              ease: "power2.out" 
+            });
+          });
+        });
+      }
+
+    });
+
+    return () => ctx.revert();
+  }, []);
+
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -128,59 +332,33 @@ export default function Contact() {
   return (
     <main className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative py-20 bg-gradient-to-br from-gray-900 to-gray-800 text-white overflow-hidden">
+      <section ref={heroRef} className="relative py-20 bg-gradient-to-br from-gray-900 to-gray-800 text-white overflow-hidden">
         <div className="absolute inset-0 overflow-hidden">
-          <motion.div
-            className="absolute top-20 right-20 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl"
-            animate={{ y: [0, -30, 0], rotate: [0, 180, 360] }}
-            transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
-          />
-          <motion.div
-            className="absolute bottom-20 left-20 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"
-            animate={{ y: [0, 40, 0], rotate: [360, 180, 0] }}
-            transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-          />
+          <div className="floating-bg absolute top-20 right-20 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl" />
+          <div className="floating-bg absolute bottom-20 left-20 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
         </div>
 
         <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.h1
-            variants={fadeInUp}
-            initial="hidden"
-            animate="visible"
-            className="text-4xl sm:text-6xl font-bold mb-6"
-          >
+          <h1 className="text-4xl sm:text-6xl font-bold mb-6">
             Get In Touch
-          </motion.h1>
-          <motion.p
-            variants={fadeInUp}
-            initial="hidden"
-            animate="visible"
-            transition={{ delay: 0.2 }}
-            className="text-lg sm:text-xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed"
-          >
+          </h1>
+          <p className="text-lg sm:text-xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
             Ready to find your dream home? We're here to help you every step of the way. 
             Contact our expert team today.
-          </motion.p>
+          </p>
         </div>
       </section>
 
       {/* Contact Info Cards */}
       <section className="py-20 bg-gray-50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
-          >
+          <div ref={contactCardsRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {contactInfo.map((info, index) => (
-              <motion.div
+              <div
                 key={index}
-                variants={scaleIn}
-                className="bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 text-center"
+                className="contact-card bg-white p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 text-center"
               >
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-black text-white rounded-full mb-6">
+                <div className="contact-icon inline-flex items-center justify-center w-16 h-16 bg-black text-white rounded-full mb-6">
                   {info.icon}
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-4">{info.title}</h3>
@@ -190,9 +368,9 @@ export default function Contact() {
                   ))}
                 </div>
                 <p className="text-sm text-gray-500 leading-relaxed">{info.description}</p>
-              </motion.div>
+              </div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </section>
 
@@ -200,14 +378,8 @@ export default function Contact() {
       <section className="py-24 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
-            {/* Contact Form */}
-            <motion.div
-              variants={slideInLeft}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="space-y-8"
-            >
+                        {/* Contact Form */}
+            <div ref={formRef} className="space-y-8">
               <div>
                 <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">
                   Send us a Message
@@ -220,62 +392,58 @@ export default function Contact() {
 
               <div>
                 {isSubmitted && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    className="mb-8 p-4 bg-green-50 border border-green-200 rounded-lg flex items-center gap-3"
-                  >
+                  <div className="mb-8 p-4 bg-green-50 border border-green-200 rounded-lg flex items-center gap-3">
                     <CheckCircle className="w-5 h-5 text-green-600" />
                     <span className="text-green-800 font-medium">
                       Message sent successfully! We'll be in touch soon.
                     </span>
-                  </motion.div>
+                  </div>
                 )}
 
                 <form onSubmit={handleSubmit} className="space-y-8">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                      Full Name *
-                    </label>
-                    <div className="relative">
-                      <User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
-                      <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleInputChange}
-                        required
-                        className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent transition-colors duration-300"
-                        placeholder="John Doe"
-                        suppressHydrationWarning={true}
-                      />
+                                    <div className="form-field grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div>
+                      <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+                        Full Name *
+                      </label>
+                      <div className="relative">
+                        <User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+                        <input
+                          type="text"
+                          id="name"
+                          name="name"
+                          value={formData.name}
+                          onChange={handleInputChange}
+                          required
+                          className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent transition-colors duration-300"
+                          placeholder="John Doe"
+                          suppressHydrationWarning={true}
+                        />
+                      </div>
+                    </div>
+
+                    <div>
+                      <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                        Email Address *
+                      </label>
+                      <div className="relative">
+                        <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+                        <input
+                          type="email"
+                          id="email"
+                          name="email"
+                          value={formData.email}
+                          onChange={handleInputChange}
+                          required
+                          className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent transition-colors duration-300"
+                          placeholder="john@example.com"
+                          suppressHydrationWarning={true}
+                        />
+                      </div>
                     </div>
                   </div>
 
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                      Email Address *
-                    </label>
-                    <div className="relative">
-                      <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
-                      <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleInputChange}
-                        required
-                        className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent transition-colors duration-300"
-                        placeholder="john@example.com"
-                        suppressHydrationWarning={true}
-                      />
-                    </div>
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div className="form-field grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
                     <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
                       Phone Number
@@ -321,68 +489,62 @@ export default function Contact() {
                   </div>
                 </div>
 
-                <div>
-                  <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">
-                    Subject *
-                  </label>
-                  <input
-                    type="text"
-                    id="subject"
-                    name="subject"
-                    value={formData.subject}
-                    onChange={handleInputChange}
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent transition-colors duration-300"
-                    placeholder="How can we help you?"
-                    suppressHydrationWarning={true}
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                    Message *
-                  </label>
-                  <div className="relative">
-                    <MessageCircle className="absolute left-3 top-3 w-5 h-5 text-gray-400" />
-                    <textarea
-                      id="message"
-                      name="message"
-                      value={formData.message}
+                                  <div className="form-field">
+                    <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">
+                      Subject *
+                    </label>
+                    <input
+                      type="text"
+                      id="subject"
+                      name="subject"
+                      value={formData.subject}
                       onChange={handleInputChange}
                       required
-                      rows={6}
-                      className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent transition-colors duration-300 resize-none"
-                      placeholder="Tell us about your dream home or any questions you have..."
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent transition-colors duration-300"
+                      placeholder="How can we help you?"
                       suppressHydrationWarning={true}
                     />
                   </div>
-                </div>
 
-                <button
-                  type="submit"
-                  disabled={isLoading}
-                  className="w-full bg-black text-white py-4 px-6 rounded-lg font-medium hover:bg-gray-900 transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
-                  suppressHydrationWarning={true}
-                >
-                  {isLoading ? (
-                    <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                  ) : (
-                    <Send className="w-5 h-5" />
-                  )}
-                  {isLoading ? 'Sending...' : 'Send Message'}
-                                  </button>
+                  <div className="form-field">
+                    <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+                      Message *
+                    </label>
+                    <div className="relative">
+                      <MessageCircle className="absolute left-3 top-3 w-5 h-5 text-gray-400" />
+                      <textarea
+                        id="message"
+                        name="message"
+                        value={formData.message}
+                        onChange={handleInputChange}
+                        required
+                        rows={6}
+                        className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent transition-colors duration-300 resize-none"
+                        placeholder="Tell us about your dream home or any questions you have..."
+                        suppressHydrationWarning={true}
+                      />
+                    </div>
+                  </div>
+
+                  <button
+                    type="submit"
+                    disabled={isLoading}
+                    className="submit-btn w-full bg-black text-white py-4 px-6 rounded-lg font-medium hover:bg-gray-900 transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                    suppressHydrationWarning={true}
+                  >
+                    {isLoading ? (
+                      <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                    ) : (
+                      <Send className="w-5 h-5" />
+                    )}
+                    {isLoading ? 'Sending...' : 'Send Message'}
+                  </button>
                 </form>
               </div>
-            </motion.div>
+            </div>
 
             {/* Map & Location Info */}
-            <motion.div
-              variants={slideInRight}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="space-y-8"
-            >
+            <div ref={mapRef} className="space-y-8">
               <div>
                 <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">
                   Visit Our Office
@@ -406,7 +568,7 @@ export default function Contact() {
                 />
                 <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
                   <div className="bg-white/90 backdrop-blur-sm p-4 rounded-lg text-center">
-                    <MapPin className="w-8 h-8 text-black mx-auto mb-2" />
+                    <MapPin className="map-pin w-8 h-8 text-black mx-auto mb-2" />
                     <p className="text-black font-medium">Beverly Hills Office</p>
                     <p className="text-gray-700 text-sm">123 Luxury Avenue</p>
                   </div>
@@ -431,7 +593,7 @@ export default function Contact() {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>
@@ -439,33 +601,20 @@ export default function Contact() {
       {/* Office Locations */}
       <section className="py-24 bg-gray-50">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
+          <div className="text-center mb-16">
             <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">
               Our Locations
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
               Find us in the most prestigious locations across the country
             </p>
-          </motion.div>
+          </div>
 
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-3 gap-10"
-          >
+          <div ref={officesRef} className="grid grid-cols-1 md:grid-cols-3 gap-10">
             {offices.map((office, index) => (
-              <motion.div
+              <div
                 key={index}
-                variants={scaleIn}
-                className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300"
+                className="office-card bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300"
               >
                 <div className="relative h-48 overflow-hidden">
                   <img
@@ -508,9 +657,9 @@ export default function Contact() {
                     Get Directions
                   </button>
                 </div>
-              </motion.div>
+              </div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </section>
     </main>
