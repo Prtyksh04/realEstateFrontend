@@ -10,7 +10,7 @@ const testimonials = [
     role: "Tech Executive",
     location: "Beverly Hills, CA",
     rating: 5,
-    avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b47c?w=150&h=150&fit=crop&crop=face",
+    avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face",
     content: "DreamHomes made finding our perfect family home effortless. Their attention to detail and understanding of luxury living is unmatched. We couldn't be happier with our new Beverly Hills estate.",
     propertyType: "Family Estate"
   },
@@ -49,15 +49,15 @@ export const Testimonials = () => {
     const initAnimations = async () => {
       const { gsap } = await import('gsap');
       const { ScrollTrigger } = await import('gsap/ScrollTrigger');
-      
+
       gsap.registerPlugin(ScrollTrigger);
 
       const ctx = gsap.context(() => {
         // Title animation
-        gsap.fromTo(titleRef.current, 
-          { 
-            opacity: 0, 
-            y: 60 
+        gsap.fromTo(titleRef.current,
+          {
+            opacity: 0,
+            y: 60
           },
           {
             opacity: 1,

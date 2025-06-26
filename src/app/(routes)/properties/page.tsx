@@ -2,7 +2,7 @@
 
 import { motion, Variants } from 'framer-motion';
 import { useState } from 'react';
-import { Search, Filter, MapPin, Bed, Bath, Square, Heart, X, ChevronDown, SlidersHorizontal } from 'lucide-react';
+import { Search, Filter, MapPin, Bed, Bath, Square, Heart, X, SlidersHorizontal } from 'lucide-react';
 
 const fadeInUp: Variants = {
   hidden: { opacity: 0, y: 60 },
@@ -241,7 +241,7 @@ export default function Properties() {
             transition={{ delay: 0.2 }}
             className="text-lg sm:text-xl text-gray-300 mb-8 max-w-2xl mx-auto"
           >
-            Discover exceptional homes in the world's most desirable locations
+            Discover exceptional homes in the world&apos;s most desirable locations
           </motion.p>
 
           {/* Search Bar */}

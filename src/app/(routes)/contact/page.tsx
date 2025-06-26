@@ -1,6 +1,6 @@
 'use client';
 
-import { motion, Variants } from 'framer-motion';
+
 import { useState, useEffect, useRef } from 'react';
 import { Phone, Mail, MapPin, Clock, Send, User, MessageCircle, Home, CheckCircle } from 'lucide-react';
 import { gsap } from 'gsap';
@@ -11,48 +11,33 @@ if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-const fadeInUp: Variants = {
-  hidden: { opacity: 0, y: 60 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.6, -0.05, 0.01, 0.99] } }
-};
 
-const staggerContainer: Variants = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.2 } }
-};
 
-const scaleIn: Variants = {
-  hidden: { opacity: 0, scale: 0.8 },
-  visible: { opacity: 1, scale: 1, transition: { duration: 0.6, ease: [0.6, -0.05, 0.01, 0.99] } }
-};
 
-const slideInLeft: Variants = {
-  hidden: { opacity: 0, x: -60 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: [0.6, -0.05, 0.01, 0.99] } }
-};
 
-const slideInRight: Variants = {
-  hidden: { opacity: 0, x: 60 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.8, ease: [0.6, -0.05, 0.01, 0.99] } }
-};
+
+
+
+
+
 
 const contactInfo = [
   {
     icon: <Phone className="w-6 h-6" />,
     title: "Phone",
-    details: ["+1 (555) 123-4567", "+1 (555) 987-6543"],
+    details: ["+91 98765 43210", "+91 98765 43220"],
     description: "Available 24/7 for your convenience"
   },
   {
     icon: <Mail className="w-6 h-6" />,
     title: "Email",
-    details: ["info@dreamhomes.com", "support@dreamhomes.com"],
-    description: "We'll respond within 2 hours"
+    details: ["info@dreamhomes.in", "support@dreamhomes.in"],
+    description: "We&apos;ll respond within 2 hours"
   },
   {
     icon: <MapPin className="w-6 h-6" />,
     title: "Address",
-    details: ["123 Luxury Avenue", "Beverly Hills, CA 90210"],
+    details: ["123 Worli Sea Face", "Mumbai, Maharashtra 400018"],
     description: "Visit our flagship office"
   },
   {
@@ -344,7 +329,7 @@ export default function Contact() {
             Get In Touch
           </h1>
           <p className="text-lg sm:text-xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
-            Ready to find your dream home? We're here to help you every step of the way.
+            Ready to find your dream home? We&apos;re here to help you every step of the way.
             Contact our expert team today.
           </p>
         </div>
@@ -387,7 +372,7 @@ export default function Contact() {
                 </h2>
                 <p className="text-gray-600 mb-8 leading-relaxed">
                   Have a question about a property or need personalized assistance?
-                  Fill out the form below and we'll get back to you promptly.
+                  Fill out the form below and we&apos;ll get back to you promptly.
                 </p>
               </div>
 
@@ -396,7 +381,7 @@ export default function Contact() {
                   <div className="mb-8 p-4 bg-green-50 border border-green-200 rounded-lg flex items-center gap-3">
                     <CheckCircle className="w-5 h-5 text-green-600" />
                     <span className="text-green-800 font-medium">
-                      Message sent successfully! We'll be in touch soon.
+                      Message sent successfully! We&apos;ll be in touch soon.
                     </span>
                   </div>
                 )}
@@ -551,7 +536,7 @@ export default function Contact() {
                   Visit Our Office
                 </h2>
                 <p className="text-gray-600 mb-8 leading-relaxed">
-                  Come see us in person at our flagship Beverly Hills location.
+                  Come see us in person at our flagship Mumbai location.
                   Our team is ready to help you find your perfect home.
                 </p>
               </div>
@@ -570,8 +555,8 @@ export default function Contact() {
                 <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
                   <div className="bg-white/90 backdrop-blur-sm p-4 rounded-lg text-center">
                     <MapPin className="map-pin w-8 h-8 text-black mx-auto mb-2" />
-                    <p className="text-black font-medium">Beverly Hills Office</p>
-                    <p className="text-gray-700 text-sm">123 Luxury Avenue</p>
+                    <p className="text-black font-medium">Mumbai Office</p>
+                    <p className="text-gray-700 text-sm">123 Worli Sea Face</p>
                   </div>
                 </div>
               </div>
@@ -582,11 +567,11 @@ export default function Contact() {
                 <div className="space-y-3">
                   <div className="flex items-center gap-3">
                     <Phone className="w-5 h-5 text-gray-600" />
-                    <span className="text-gray-700">+1 (555) 123-4567</span>
+                    <span className="text-gray-700">+91 98765 43210</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <Mail className="w-5 h-5 text-gray-600" />
-                    <span className="text-gray-700">info@dreamhomes.com</span>
+                    <span className="text-gray-700">info@dreamhomes.in</span>
                   </div>
                   <div className="flex items-center gap-3">
                     <Clock className="w-5 h-5 text-gray-600" />

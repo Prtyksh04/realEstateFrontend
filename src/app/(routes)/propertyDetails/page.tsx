@@ -15,23 +15,23 @@ import {
 const propertyData = {
   id: 1,
   title: "Luxury Modern Villa",
-  price: "$2,850,000",
-  location: "Beverly Hills, CA 90210",
+  price: "₹28.5 Cr",
+  location: "Worli Sea Face, Mumbai 400018",
   type: "Villa",
   status: "For Sale",
   featured: true,
   bedrooms: 5,
   bathrooms: 4,
-  area: 4500,
+  area: 418,
   garage: 3,
   yearBuilt: 2023,
-  lotSize: "0.8 acres",
-  description: "Discover the epitome of luxury living in this stunning modern villa, perfectly situated in the heart of Beverly Hills. This architectural masterpiece seamlessly blends contemporary design with timeless elegance, offering an unparalleled lifestyle experience.",
+  lotSize: "0.32 hectares",
+  description: "Discover the epitome of luxury living in this stunning modern villa, perfectly situated in the heart of Mumbai. This architectural masterpiece seamlessly blends contemporary design with timeless elegance, offering an unparalleled lifestyle experience.",
   fullDescription: `This exceptional property represents the pinnacle of luxury real estate, featuring cutting-edge design and premium finishes throughout. The open-concept living spaces are flooded with natural light through floor-to-ceiling windows, creating a seamless indoor-outdoor living experience.
 
-  The gourmet kitchen boasts top-of-the-line European appliances, custom cabinetry, and a magnificent island perfect for entertaining. The master suite is a private sanctuary with panoramic city views, a spa-like ensuite, and a private terrace.
+  The gourmet kitchen boasts top-of-the-line European appliances, custom cabinetry, and a magnificent island perfect for entertaining. The master suite is a private sanctuary with panoramic Mumbai skyline views, a spa-like ensuite, and a private terrace overlooking the Arabian Sea.
 
-  Additional features include a state-of-the-art home theater, wine cellar, fitness center, and infinity pool with stunning city views. The property is equipped with smart home technology, ensuring convenience and security at your fingertips.`,
+  Additional features include a state-of-the-art home theater, wine cellar, fitness center, and infinity pool with stunning views of Marine Drive. The property is equipped with smart home technology, ensuring convenience and security at your fingertips.`,
   images: [
     "https://images.unsplash.com/photo-1613490493576-7fde63acd811?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
     "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
@@ -49,10 +49,10 @@ const propertyData = {
     { icon: <CarIcon className="w-5 h-5" />, name: "Private Garage" }
   ],
   agent: {
-    name: "Sarah Johnson",
+    name: "Priya Sharma",
     title: "Senior Real Estate Agent",
-    phone: "+1 (555) 123-4567",
-    email: "sarah.johnson@dreamhomes.com",
+    phone: "+91 98765 43210",
+    email: "priya.sharma@dreamhomes.in",
     image: "https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80",
     rating: 4.9,
     reviews: 127,
@@ -61,10 +61,10 @@ const propertyData = {
   virtualTour: "https://example.com/virtual-tour",
   floorPlan: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
   nearbyPlaces: [
-    { name: "Beverly Hills Hotel", distance: "0.5 miles", type: "Hotel" },
-    { name: "Rodeo Drive", distance: "0.8 miles", type: "Shopping" },
-    { name: "Beverly Hills High School", distance: "1.2 miles", type: "School" },
-    { name: "Cedars-Sinai Medical Center", distance: "2.1 miles", type: "Hospital" }
+    { name: "The Taj Mahal Palace", distance: "0.8 km", type: "Hotel" },
+    { name: "Palladium Mall", distance: "1.2 km", type: "Shopping" },
+    { name: "Cathedral & John Connon School", distance: "2.0 km", type: "School" },
+    { name: "Breach Candy Hospital", distance: "3.5 km", type: "Hospital" }
   ]
 };
 
@@ -73,7 +73,7 @@ export default function PropertyDetails() {
   const [isFavorite, setIsFavorite] = useState(false);
   const [showFullDescription, setShowFullDescription] = useState(false);
   const [activeTab, setActiveTab] = useState('overview');
-  const [isContactFormOpen, setIsContactFormOpen] = useState(false);
+
   const [isClient, setIsClient] = useState(false);
 
   // GSAP refs
@@ -200,7 +200,7 @@ export default function PropertyDetails() {
           text: `Check out this amazing property: ${propertyData.title}`,
           url: window.location.href,
         });
-      } catch (error) {
+      } catch {
         console.log('Share cancelled');
       }
     } else {
@@ -335,7 +335,7 @@ export default function PropertyDetails() {
             <div className="detail-card text-center bg-white p-6 rounded-2xl shadow-lg">
               <Square className="w-8 h-8 mx-auto mb-3 text-gray-600" />
               <div className="text-2xl font-bold text-gray-900">{propertyData.area.toLocaleString()}</div>
-              <div className="text-gray-600">Sq Ft</div>
+              <div className="text-gray-600">Sq M</div>
             </div>
             <div className="detail-card text-center bg-white p-6 rounded-2xl shadow-lg">
               <Car className="w-8 h-8 mx-auto mb-3 text-gray-600" />
@@ -428,24 +428,24 @@ export default function PropertyDetails() {
                     <div className="space-y-4">
                       <h3 className="text-xl font-semibold text-gray-900">Interior Features</h3>
                       <ul className="space-y-2 text-gray-600">
-                        <li>• Hardwood floors throughout</li>
-                        <li>• Gourmet kitchen with premium appliances</li>
-                        <li>• Master suite with walk-in closet</li>
-                        <li>• Home office/study room</li>
-                        <li>• Fireplace in living room</li>
-                        <li>• Smart home automation</li>
+                        <li>• Italian marble floors throughout</li>
+                        <li>• Modular kitchen with premium appliances</li>
+                        <li>• Master suite with walk-in wardrobe</li>
+                        <li>• Study room with built-in storage</li>
+                        <li>• Designer ceiling in living room</li>
+                        <li>• Smart home automation system</li>
                       </ul>
                     </div>
                     
                     <div className="space-y-4">
                       <h3 className="text-xl font-semibold text-gray-900">Exterior Features</h3>
                       <ul className="space-y-2 text-gray-600">
-                        <li>• Private swimming pool</li>
-                        <li>• Landscaped gardens</li>
-                        <li>• Outdoor entertainment area</li>
-                        <li>• 3-car garage</li>
-                        <li>• Security system</li>
-                        <li>• Mountain views</li>
+                        <li>• Private infinity pool</li>
+                        <li>• Landscaped terrace gardens</li>
+                        <li>• Outdoor entertainment deck</li>
+                        <li>• 3-car covered parking</li>
+                        <li>• 24/7 security system</li>
+                        <li>• Arabian Sea views</li>
                       </ul>
                     </div>
                   </div>

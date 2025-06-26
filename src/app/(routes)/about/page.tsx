@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, Variants } from 'framer-motion';
-import { Users, Award, TrendingUp, Heart, Shield, Target, Star, MapPin, Phone, Mail } from 'lucide-react';
+import { Award, Heart, Shield, Target, Star, Phone, Mail } from 'lucide-react';
 
 const fadeInUp: Variants = {
   hidden: { opacity: 0, y: 60 },
@@ -30,32 +30,32 @@ const slideInRight: Variants = {
 
 const teamMembers = [
   {
-    name: "Sarah Johnson",
+    name: "Priya Sharma",
     position: "Founder & CEO",
     image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80",
-    bio: "15+ years in luxury real estate with a passion for finding perfect homes for families.",
-    contact: { phone: "+1 (555) 123-4567", email: "sarah@dreamhomes.com" }
+    bio: "15+ years in luxury real estate with a passion for finding perfect homes for families across India.",
+    contact: { phone: "+91 98765 43210", email: "priya@dreamhomes.in" }
   },
   {
-    name: "Michael Chen",
+    name: "Arjun Patel",
     position: "Head of Sales",
     image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80",
-    bio: "Expert in high-end property sales with a track record of $500M+ in transactions.",
-    contact: { phone: "+1 (555) 234-5678", email: "michael@dreamhomes.com" }
+    bio: "Expert in high-end property sales with a track record of ₹5000 Cr+ in transactions.",
+    contact: { phone: "+91 98765 43211", email: "arjun@dreamhomes.in" }
   },
   {
-    name: "Emily Rodriguez",
+    name: "Kavya Reddy",
     position: "Lead Designer",
     image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&q=80",
-    bio: "Interior design specialist helping clients visualize their dream home potential.",
-    contact: { phone: "+1 (555) 345-6789", email: "emily@dreamhomes.com" }
+    bio: "Interior design specialist helping clients visualize their dream home potential with Indian aesthetics.",
+    contact: { phone: "+91 98765 43212", email: "kavya@dreamhomes.in" }
   },
   {
-    name: "David Thompson",
+    name: "Rohit Gupta",
     position: "Market Analyst",
     image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80",
-    bio: "Data-driven insights specialist providing accurate market valuations and trends.",
-    contact: { phone: "+1 (555) 456-7890", email: "david@dreamhomes.com" }
+    bio: "Data-driven insights specialist providing accurate market valuations and trends across major Indian cities.",
+    contact: { phone: "+91 98765 43213", email: "rohit@dreamhomes.in" }
   }
 ];
 
@@ -85,7 +85,7 @@ const companyValues = [
 const stats = [
   { number: "15+", label: "Years Experience" },
   { number: "2000+", label: "Happy Clients" },
-  { number: "$2B+", label: "Properties Sold" },
+  { number: "₹20,000 Cr+", label: "Properties Sold" },
   { number: "50+", label: "Awards Won" }
 ];
 
@@ -128,7 +128,7 @@ export default function AboutUs() {
             transition={{ delay: 0.2 }}
             className="text-lg sm:text-xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed"
           >
-            For over 15 years, we've been more than just a real estate company. We're dream makers,
+            For over 15 years, we&apos;ve been more than just a real estate company. We&apos;re dream makers,
             home finders, and trusted advisors dedicated to turning your property aspirations into reality.
           </motion.p>
 
@@ -178,7 +178,7 @@ export default function AboutUs() {
               </h2>
               <div className="space-y-6 text-gray-600 leading-relaxed">
                 <p>
-                  Founded in 2009 by Sarah Johnson, DreamHomes began with a simple mission:
+                  Founded in 2009 by Priya Sharma, DreamHomes began with a simple mission:
                   to revolutionize the real estate experience by putting clients first and
                   leveraging technology to make property transactions seamless.
                 </p>

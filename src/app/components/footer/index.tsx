@@ -56,9 +56,9 @@ const socialLinks = [
 ];
 
 const contactInfo = [
-  { icon: Phone, text: '+1 (555) 123-4567' },
-  { icon: Mail, text: 'info@dreamhomes.com' },
-  { icon: MapPin, text: '123 Luxury Ave, Beverly Hills, CA 90210' }
+  { icon: Phone, text: '+91 98765 43210' },
+  { icon: Mail, text: 'info@dreamhomes.in' },
+  { icon: MapPin, text: '123 Worli Sea Face, Mumbai, Maharashtra 400018' }
 ];
 
 const fadeInUp = {
@@ -183,7 +183,7 @@ export default function Footer() {
           </motion.div>
 
           {/* Footer Links */}
-          {footerSections.map((section, index) => (
+          {footerSections.map((section) => (
             <motion.div key={section.title} variants={fadeInUp}>
               <h3 className="text-lg font-semibold mb-4 text-white">{section.title}</h3>
               <ul className="space-y-2">

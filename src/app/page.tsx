@@ -1,7 +1,7 @@
 'use client';
 
 import { motion, Variants } from 'framer-motion';
-import { Search, MapPin, Home as HomeIcon, Award, Users, TrendingUp } from 'lucide-react';
+import { Search, MapPin, Home as HomeIcon, Award, TrendingUp } from 'lucide-react';
 import { Testimonials } from './components/testimonials';
 
 const fadeInUp: Variants = {
@@ -119,7 +119,7 @@ export default function Home() {
               Featured Properties
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Handpicked luxury homes in the most desirable locations
+              Handpicked luxury homes in India&apos;s most desirable locations
             </p>
           </motion.div>
 
@@ -134,24 +134,24 @@ export default function Home() {
               {
                 image: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80",
                 title: "Modern Villa",
-                location: "Beverly Hills, CA",
-                price: "$4.2M",
+                location: "Bandra West, Mumbai",
+                price: "₹4.2 Cr",
                 beds: 5,
                 baths: 4
               },
               {
                 image: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80",
                 title: "Luxury Penthouse",
-                location: "Manhattan, NY",
-                price: "$8.5M",
+                location: "Golf Course Road, Gurgaon",
+                price: "₹8.5 Cr",
                 beds: 4,
                 baths: 3
               },
               {
                 image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&q=80",
                 title: "Oceanfront Estate",
-                location: "Malibu, CA",
-                price: "$12.8M",
+                location: "Candolim Beach, Goa",
+                price: "₹12.8 Cr",
                 beds: 6,
                 baths: 5
               }
@@ -210,7 +210,7 @@ export default function Home() {
               Why Choose Us
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Experience luxury real estate with our premium services
+              Experience luxury real estate across India with our premium services
             </p>
           </motion.div>
 
@@ -225,17 +225,17 @@ export default function Home() {
               {
                 icon: <HomeIcon className="w-8 h-8" />,
                 title: "Premium Properties",
-                description: "Curated selection of luxury homes in prime locations"
+                description: "Curated selection of luxury homes in India&apos;s prime locations"
               },
               {
                 icon: <Award className="w-8 h-8" />,
                 title: "Expert Guidance",
-                description: "Professional real estate experts with years of experience"
+                description: "Professional real estate experts with deep knowledge of Indian markets"
               },
               {
                 icon: <TrendingUp className="w-8 h-8" />,
                 title: "Market Insights",
-                description: "Real-time market data and investment opportunities"
+                description: "Real-time Indian real estate market data and investment opportunities"
               }
             ].map((service, index) => (
               <motion.div
