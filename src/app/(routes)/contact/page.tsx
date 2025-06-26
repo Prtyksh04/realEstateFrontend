@@ -65,30 +65,31 @@ const contactInfo = [
 
 const offices = [
   {
-    city: "Beverly Hills",
-    address: "123 Luxury Avenue, Beverly Hills, CA 90210",
-    phone: "+1 (555) 123-4567",
-    email: "beverlyhills@dreamhomes.com",
+    city: "New Delhi",
+    address: "123 Rajpath Avenue, New Delhi, DL 110001",
+    phone: "+91 11 1234 5678",
+    email: "delhi@dreamhomes.in",
     image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     featured: true
   },
   {
-    city: "Manhattan",
-    address: "456 Park Avenue, New York, NY 10022",
-    phone: "+1 (555) 234-5678",
-    email: "manhattan@dreamhomes.com",
+    city: "Mumbai",
+    address: "456 Marine Drive, Mumbai, MH 400002",
+    phone: "+91 22 2345 6789",
+    email: "mumbai@dreamhomes.in",
     image: "https://images.unsplash.com/photo-1496568816309-51d7c20e3b21?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     featured: false
   },
   {
-    city: "Miami",
-    address: "789 Ocean Drive, Miami, FL 33139",
-    phone: "+1 (555) 345-6789",
-    email: "miami@dreamhomes.com",
+    city: "Bangalore",
+    address: "789 MG Road, Bangalore, KA 560001",
+    phone: "+91 80 3456 7890",
+    email: "bangalore@dreamhomes.in",
     image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     featured: false
   }
 ];
+
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -115,12 +116,12 @@ export default function Contact() {
     const ctx = gsap.context(() => {
       // Hero section animation
       if (heroRef.current) {
-        gsap.fromTo(heroRef.current.querySelector('h1'), 
+        gsap.fromTo(heroRef.current.querySelector('h1'),
           { opacity: 0, y: 100, scale: 0.8 },
           { opacity: 1, y: 0, scale: 1, duration: 1.2, ease: "power3.out" }
         );
-        
-        gsap.fromTo(heroRef.current.querySelector('p'), 
+
+        gsap.fromTo(heroRef.current.querySelector('p'),
           { opacity: 0, y: 50 },
           { opacity: 1, y: 0, duration: 1, delay: 0.3, ease: "power2.out" }
         );
@@ -162,21 +163,21 @@ export default function Contact() {
         contactCardsRef.current.querySelectorAll('.contact-card').forEach(card => {
           card.addEventListener('mouseenter', () => {
             gsap.to(card, { scale: 1.05, y: -10, duration: 0.3, ease: "power2.out" });
-            gsap.to(card.querySelector('.contact-icon'), { 
-              rotation: 360, 
-              scale: 1.2, 
-              duration: 0.5, 
-              ease: "elastic.out(1, 0.5)" 
+            gsap.to(card.querySelector('.contact-icon'), {
+              rotation: 360,
+              scale: 1.2,
+              duration: 0.5,
+              ease: "elastic.out(1, 0.5)"
             });
           });
 
           card.addEventListener('mouseleave', () => {
             gsap.to(card, { scale: 1, y: 0, duration: 0.3, ease: "power2.out" });
-            gsap.to(card.querySelector('.contact-icon'), { 
-              rotation: 0, 
-              scale: 1, 
-              duration: 0.3, 
-              ease: "power2.out" 
+            gsap.to(card.querySelector('.contact-icon'), {
+              rotation: 0,
+              scale: 1,
+              duration: 0.3,
+              ease: "power2.out"
             });
           });
         });
@@ -263,32 +264,32 @@ export default function Contact() {
         // Office card hover effects
         officesRef.current.querySelectorAll('.office-card').forEach(card => {
           card.addEventListener('mouseenter', () => {
-            gsap.to(card, { 
-              scale: 1.03, 
-              y: -15, 
+            gsap.to(card, {
+              scale: 1.03,
+              y: -15,
               rotationY: 5,
-              duration: 0.4, 
-              ease: "power2.out" 
+              duration: 0.4,
+              ease: "power2.out"
             });
-            gsap.to(card.querySelector('img'), { 
-              scale: 1.1, 
-              duration: 0.6, 
-              ease: "power2.out" 
+            gsap.to(card.querySelector('img'), {
+              scale: 1.1,
+              duration: 0.6,
+              ease: "power2.out"
             });
           });
 
           card.addEventListener('mouseleave', () => {
-            gsap.to(card, { 
-              scale: 1, 
-              y: 0, 
+            gsap.to(card, {
+              scale: 1,
+              y: 0,
               rotationY: 0,
-              duration: 0.4, 
-              ease: "power2.out" 
+              duration: 0.4,
+              ease: "power2.out"
             });
-            gsap.to(card.querySelector('img'), { 
-              scale: 1, 
-              duration: 0.6, 
-              ease: "power2.out" 
+            gsap.to(card.querySelector('img'), {
+              scale: 1,
+              duration: 0.6,
+              ease: "power2.out"
             });
           });
         });
@@ -310,7 +311,7 @@ export default function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
-    
+
     // Simulate form submission
     setTimeout(() => {
       setIsLoading(false);
@@ -323,7 +324,7 @@ export default function Contact() {
         message: '',
         propertyType: ''
       });
-      
+
       // Reset success message after 5 seconds
       setTimeout(() => setIsSubmitted(false), 5000);
     }, 1500);
@@ -343,7 +344,7 @@ export default function Contact() {
             Get In Touch
           </h1>
           <p className="text-lg sm:text-xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
-            Ready to find your dream home? We're here to help you every step of the way. 
+            Ready to find your dream home? We're here to help you every step of the way.
             Contact our expert team today.
           </p>
         </div>
@@ -378,14 +379,14 @@ export default function Contact() {
       <section className="py-24 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
-                        {/* Contact Form */}
+            {/* Contact Form */}
             <div ref={formRef} className="space-y-8">
               <div>
                 <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-6">
                   Send us a Message
                 </h2>
                 <p className="text-gray-600 mb-8 leading-relaxed">
-                  Have a question about a property or need personalized assistance? 
+                  Have a question about a property or need personalized assistance?
                   Fill out the form below and we'll get back to you promptly.
                 </p>
               </div>
@@ -401,7 +402,7 @@ export default function Contact() {
                 )}
 
                 <form onSubmit={handleSubmit} className="space-y-8">
-                                    <div className="form-field grid grid-cols-1 sm:grid-cols-2 gap-6">
+                  <div className="form-field grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div>
                       <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
                         Full Name *
@@ -444,52 +445,52 @@ export default function Contact() {
                   </div>
 
                   <div className="form-field grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  <div>
-                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
-                      Phone Number
-                    </label>
-                    <div className="relative">
-                      <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
-                      <input
-                        type="tel"
-                        id="phone"
-                        name="phone"
-                        value={formData.phone}
-                        onChange={handleInputChange}
-                        className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent transition-colors duration-300"
-                        placeholder="+1 (555) 123-4567"
-                        suppressHydrationWarning={true}
-                      />
+                    <div>
+                      <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
+                        Phone Number
+                      </label>
+                      <div className="relative">
+                        <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+                        <input
+                          type="tel"
+                          id="phone"
+                          name="phone"
+                          value={formData.phone}
+                          onChange={handleInputChange}
+                          className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent transition-colors duration-300"
+                          placeholder="+1 (555) 123-4567"
+                          suppressHydrationWarning={true}
+                        />
+                      </div>
+                    </div>
+
+                    <div>
+                      <label htmlFor="propertyType" className="block text-sm font-medium text-gray-700 mb-2">
+                        Property Interest
+                      </label>
+                      <div className="relative">
+                        <Home className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+                        <select
+                          id="propertyType"
+                          name="propertyType"
+                          value={formData.propertyType}
+                          onChange={handleInputChange}
+                          className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent transition-colors duration-300 appearance-none"
+                          suppressHydrationWarning={true}
+                        >
+                          <option value="">Select property type</option>
+                          <option value="villa">Villa</option>
+                          <option value="penthouse">Penthouse</option>
+                          <option value="estate">Estate</option>
+                          <option value="townhouse">Townhouse</option>
+                          <option value="apartment">Apartment</option>
+                          <option value="other">Other</option>
+                        </select>
+                      </div>
                     </div>
                   </div>
 
-                  <div>
-                    <label htmlFor="propertyType" className="block text-sm font-medium text-gray-700 mb-2">
-                      Property Interest
-                    </label>
-                    <div className="relative">
-                      <Home className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
-                      <select
-                        id="propertyType"
-                        name="propertyType"
-                        value={formData.propertyType}
-                        onChange={handleInputChange}
-                        className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent transition-colors duration-300 appearance-none"
-                        suppressHydrationWarning={true}
-                      >
-                        <option value="">Select property type</option>
-                        <option value="villa">Villa</option>
-                        <option value="penthouse">Penthouse</option>
-                        <option value="estate">Estate</option>
-                        <option value="townhouse">Townhouse</option>
-                        <option value="apartment">Apartment</option>
-                        <option value="other">Other</option>
-                      </select>
-                    </div>
-                  </div>
-                </div>
-
-                                  <div className="form-field">
+                  <div className="form-field">
                     <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">
                       Subject *
                     </label>
@@ -550,7 +551,7 @@ export default function Contact() {
                   Visit Our Office
                 </h2>
                 <p className="text-gray-600 mb-8 leading-relaxed">
-                  Come see us in person at our flagship Beverly Hills location. 
+                  Come see us in person at our flagship Beverly Hills location.
                   Our team is ready to help you find your perfect home.
                 </p>
               </div>
@@ -650,7 +651,7 @@ export default function Contact() {
                       <span>{office.email}</span>
                     </div>
                   </div>
-                  <button 
+                  <button
                     className="w-full py-3 bg-gray-100 hover:bg-black hover:text-white rounded-lg font-medium transition-all duration-300"
                     suppressHydrationWarning={true}
                   >

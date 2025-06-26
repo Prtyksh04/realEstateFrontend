@@ -32,7 +32,7 @@ const teamMembers = [
   {
     name: "Sarah Johnson",
     position: "Founder & CEO",
-    image: "https://images.unsplash.com/photo-1494790108755-2616b612b647?w=400&q=80",
+    image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&q=80",
     bio: "15+ years in luxury real estate with a passion for finding perfect homes for families.",
     contact: { phone: "+1 (555) 123-4567", email: "sarah@dreamhomes.com" }
   },
@@ -128,7 +128,7 @@ export default function AboutUs() {
             transition={{ delay: 0.2 }}
             className="text-lg sm:text-xl text-gray-600 mb-12 max-w-3xl mx-auto leading-relaxed"
           >
-            For over 15 years, we've been more than just a real estate company. We're dream makers, 
+            For over 15 years, we've been more than just a real estate company. We're dream makers,
             home finders, and trusted advisors dedicated to turning your property aspirations into reality.
           </motion.p>
 
@@ -153,7 +153,7 @@ export default function AboutUs() {
             animate="visible"
             transition={{ delay: 0.4 }}
           >
-            <button 
+            <button
               className="px-8 py-4 bg-black text-white rounded-full font-medium hover:bg-gray-900 transition-all duration-300 text-lg"
               suppressHydrationWarning={true}
             >
@@ -178,19 +178,19 @@ export default function AboutUs() {
               </h2>
               <div className="space-y-6 text-gray-600 leading-relaxed">
                 <p>
-                  Founded in 2009 by Sarah Johnson, DreamHomes began with a simple mission: 
-                  to revolutionize the real estate experience by putting clients first and 
+                  Founded in 2009 by Sarah Johnson, DreamHomes began with a simple mission:
+                  to revolutionize the real estate experience by putting clients first and
                   leveraging technology to make property transactions seamless.
                 </p>
                 <p>
-                  What started as a small boutique agency has grown into one of the most 
-                  trusted names in luxury real estate, serving clients across premium 
-                  locations nationwide. Our success is built on relationships, integrity, 
+                  What started as a small boutique agency has grown into one of the most
+                  trusted names in luxury real estate, serving clients across premium
+                  locations nationwide. Our success is built on relationships, integrity,
                   and an unwavering commitment to excellence.
                 </p>
                 <p>
-                  Today, we continue to innovate and set new standards in the industry, 
-                  combining traditional values with modern technology to deliver 
+                  Today, we continue to innovate and set new standards in the industry,
+                  combining traditional values with modern technology to deliver
                   exceptional results for every client.
                 </p>
               </div>
@@ -300,7 +300,7 @@ export default function AboutUs() {
                   <h3 className="text-xl font-semibold text-gray-900 mb-1">{member.name}</h3>
                   <p className="text-blue-600 font-medium mb-3">{member.position}</p>
                   <p className="text-gray-600 text-sm mb-4 leading-relaxed">{member.bio}</p>
-                  
+
                   <div className="space-y-2">
                     <div className="flex items-center gap-2 text-gray-500 text-sm">
                       <Phone className="w-4 h-4" />
@@ -331,18 +331,18 @@ export default function AboutUs() {
               Our Mission
             </h2>
             <p className="text-lg text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed">
-              To redefine the real estate experience by combining unparalleled expertise, 
-              cutting-edge technology, and genuine care to help every client find not just 
+              To redefine the real estate experience by combining unparalleled expertise,
+              cutting-edge technology, and genuine care to help every client find not just
               a house, but their perfect home.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button 
+              <button
                 className="px-8 py-4 bg-white text-black rounded-full font-medium hover:bg-gray-100 transition-all duration-300"
                 suppressHydrationWarning={true}
               >
                 Start Your Journey
               </button>
-              <button 
+              <button
                 className="px-8 py-4 border-2 border-white text-white rounded-full font-medium hover:bg-white hover:text-black transition-all duration-300"
                 suppressHydrationWarning={true}
               >
